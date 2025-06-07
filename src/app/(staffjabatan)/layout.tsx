@@ -39,7 +39,7 @@ export default function RootLayout({
                         <ul className="w-full space-y-3 text-black ">
                             <li className="flex flex-row items-center gap-3 rounded-xs py-1 px-1.5  hover:bg-off-white">
                                 <Student size={24} className="text-black" />
-                                <Link href={"/admin/dashboard/newsfeed-management"} className="w-full text-left">
+                                <Link href={"/student-application"} className="w-full text-left">
                                     Student Application
                                 </Link>
                             </li>
