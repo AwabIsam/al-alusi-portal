@@ -10,6 +10,7 @@ interface Form {
 	requested_class: string;
 	for_year: string;
 	requested_school: string;
+	email_contact: string;
 	father_name: string;
 	father_phone: string;
 	father_race: string;
@@ -45,6 +46,7 @@ export default function AdmissionFormPage() {
 		requested_class: "",
 		for_year: "",
 		requested_school: "",
+		email_contact: "",
 		father_name: "",
 		father_phone: "",
 		father_race: "",
@@ -139,6 +141,7 @@ export default function AdmissionFormPage() {
 				</div>
 				{renderInput("For Year", "for_year")}
 				{renderInput("Requested School", "requested_school")}
+				{renderInput("Email Contact", "email_contact")}
 			</div>
 
 			<fieldset className="border-t pt-6">
@@ -189,7 +192,7 @@ export default function AdmissionFormPage() {
 
 			{errorMsg && <div className="bg-red-100 text-red-700 border border-red-200 p-2 rounded text-sm text-center">{errorMsg}</div>}
 
-			<div className="text-right">
+			<div className="text-right flex justify-end">
 				<Button onClick={handleSubmit} color="dark-blue" text="Submit" />
 			</div>
 		</main>

@@ -173,7 +173,7 @@ export default function RemarkedPost({
 				</div>
 
 				{/* Action Buttons */}
-				<div className="flex justify-end">
+				<div className="flex justify-end gap-2">
 					<Button text="Delete Post" color="danger" onClick={deletePost} className="block ml-auto font-semibold text-sm" />
 					<Button text="Update Post" color="dark-blue" onClick={updatePost} className="font-semibold text-sm" />
 				</div>

@@ -45,7 +45,7 @@ export async function GET(_: NextRequest, { params }: { params: Promise<{ id: st
 
 		if (insertStudentError) throw insertStudentError;
 
-		return NextResponse.json({ father, mother, student });
+		return NextResponse.json({ father, mother, student, emailcontact: application.emailcontact });
 	} catch (err) {
 		console.error(err);
 		return NextResponse.json({ msg: "Unexpected error occurred" }, { status: 500 });

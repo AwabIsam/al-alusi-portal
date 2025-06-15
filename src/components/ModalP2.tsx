@@ -48,6 +48,8 @@ interface Application {
 		primary_school_name: string;
 		primary_school_session: string;
 	};
+
+	emailcontact: string;
 }
 
 export default function ModalP2({ applicationId, onClose }: { applicationId: string; onClose: () => void }) {
@@ -138,6 +140,15 @@ export default function ModalP2({ applicationId, onClose }: { applicationId: str
 						<div className="flex flex-col items-center w-full gap-4 p-3">
 							<form className="space-y-6 p-3 w-full">
 								{/* Requested Info */}
+								<div>
+									<label className="block text-sm font-medium mb-1">Email Contact</label>
+									<Input
+										readOnly
+										type="text"
+										defaultValue={application?.emailcontact || ""}
+										className="w-full px-3 py-2 rounded-md"
+									/>
+								</div>
 								<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 									<div>
 										<label className="block text-sm font-medium mb-1">Requested Class</label>

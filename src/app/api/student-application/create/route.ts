@@ -1,5 +1,10 @@
 import { createClient } from "@/utils/supabase-connection/server";
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
+import { EmailTemplatePhase1 } from "@/components/EmailP1";
+import React from "react";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface FatherInfo {
 	name: string;
@@ -128,12 +133,20 @@ export async function POST(req: NextRequest) {
 			last_updated: new Date().toISOString(),
 			phase_status: 2,
 			is_reviewed: false,
+			emailcontact: form.email_contact,
 			father_information: insertFatherInfo.id,
 			mother_information: insertMotherInfo.id,
 			student_information: insertStudentInfo.id,
 		});
 
 		if (insertApplicationError) throw insertApplicationError;
+		
+		await resend.emails.send({
+			from: 'SIRAJ Al-Alusi <onboarding@resend.dev>',
+			to: [form.email_contact],
+			subject: 'SIRAJ Al-Alusi: Application is submitted succesfully.',
+			react: React.createElement(EmailTemplatePhase1, {fathername: form.father_name, mothername: form.mother_name}),
+		});
 
 		return NextResponse.json({ fatherInfo, motherInfo, studentInfo });
 	} catch (error) {
